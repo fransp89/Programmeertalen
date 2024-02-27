@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="84c2c9d1-2a0c-4089-b3de-0b34fd8e49e1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../opdracht_knapsack/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../opdracht_knapsack/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../opdracht_knapsack/knapsack.py" beforeDir="false" afterPath="$PROJECT_DIR$/../opdracht_knapsack/knapsack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave4.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave5.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave6.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave7.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave8.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_puzzels/src/opgave9.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_puzzels/src/opgave9.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2c7fbr2JWwmKz6HPFW42Y88gz2y" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/fransp/Desktop/Programmeertalen/opdracht_knapsack&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="84c2c9d1-2a0c-4089-b3de-0b34fd8e49e1" name="Changes" comment="" />
+      <created>1707467611948</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707467611948</updated>
+      <workItem from="1707467613050" duration="182000" />
+      <workItem from="1708626893678" duration="105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
