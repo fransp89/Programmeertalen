@@ -3,6 +3,10 @@ Study: B.Sc Informatica
 UvAnetID: 13782118
 -}
 
+{- This file allows the user to read and solve sudoku's using a backtracking
+algorithm with decision trees. It has multiple types to assist with
+representing the standard 9x9 sudoku grid. -}
+
 import System.Environment
 import Data.List
 import qualified Data.Set as Set
@@ -66,8 +70,8 @@ listOfRow sudoku row = [sudoku(row, column) | column <- positions]
     the sudoku. -}
 freeInRow :: Sudoku -> Row -> [Value]
 freeInRow sudoku row =
-    filter (`notElem` listRow) values
-        where listRow = listOfRow sudoku row
+    let listRow = listOfRow sudoku row
+        in filter (`notElem` listRow) values
 
 -- Makes a list containing all values of the given column in the given sudoku.
 listOfColumn :: Sudoku -> Column -> [Value]
@@ -77,10 +81,9 @@ listOfColumn sudoku column = [sudoku(row, column) | row <- positions]
     the sudoku. -}
 freeInColumn :: Sudoku -> Column -> [Value]
 freeInColumn sudoku column =
-    filter (`notElem` listColumn) values
-        where listColumn = listOfColumn sudoku column
+    let listColumn = listOfColumn sudoku column
+        in filter (`notElem` listColumn) values
 
--- can be faster, more logical, non-partial
 -- Finds the blocks arrays that the given (row, column) is a part of.
 findBeginSubgrid :: Sudoku -> (Row, Column) -> ([Int], [Int])
 findBeginSubgrid sudoku (row, column) =
@@ -93,7 +96,7 @@ listOfSubgrid :: Sudoku -> (Row, Column) -> [Value]
 listOfSubgrid sudoku (row, column) =
     let x = fst (findBeginSubgrid sudoku (row, column))
         y = snd (findBeginSubgrid sudoku (row, column))
-        in [sudoku(a, b) | a <- x, b <- y]
+        in [sudoku(row, column) | row <- x, column <- y]
 
 {- Makes a list of all values that are still available in a given subgrid in
     the sudoku. -}
@@ -180,26 +183,42 @@ consistent sudoku =
         list = [row, column, subgrid]
         in and list
 
--- Prints node
-printNode :: Node -> IO()
-printNode = printSudoku . fst
-
--- Gives a list of all constraints in sudoku.
-listConstraints :: Sudoku -> [Constraint]
-listConstraints sudoku = [(row, column, freeAtPos sudoku (row, column))
-                          | row <- positions,
-                            column <- positions]
-
-{--}
+{- Sorts all constraints based of the length of the amount of values that are
+    possible at a certain location of all empty spaces. -}
 constraints :: Sudoku -> [Constraint]
 constraints sudoku =
-    let list = [(row, column, freeAtPos sudoku (row, column)) | row <- positions, column <- positions]
+    let emptyLocations = openPositions sudoku
+        rowEmptyLocations = map fst emptyLocations
+        columnEmptyLocations = map snd emptyLocations
+        list = [(row, column, freeAtPos sudoku (row, column)) |
+                 row <- rowEmptyLocations, column <- columnEmptyLocations]
+
         in sortBy (\(_,_,a) (_,_,b) -> compare  (length a) (length b)) list
 
-{--}
+{- Begins the sudoku solving backtracking algorithm. Gives a sudoku back that
+is completed, or an error message. -}
+solveSudoku :: Sudoku -> Sudoku
+solveSudoku sudoku = case solveNode (sudoku, constraints sudoku) of
+                        Just (solvedSudoku, _) -> solvedSudoku
+                        Nothing -> error "Invalid sudoku"
+
+-- Uses nodes to make new iterations of sudoku's that can be recurred.
+solveNode :: Node -> Maybe Node
+solveNode (sudoku, []) = Just (sudoku, [])
+solveNode (sudoku, (row, column, legalValues):rest)
+    | null (constraints sudoku) = Nothing
+    | otherwise = case solveNode (newSudoku, newConstraints) of
+                    Just (solvedSudoku, _) -> Just (solvedSudoku, [])
+                    Nothing -> solveNode (sudoku, rest)
+    where
+        newSudoku = extend sudoku (row, column, head legalValues)
+        newConstraints = constraints newSudoku
+
 main :: IO ()
-main =
-    do args <- getArgs
-       sud <- (readSudoku . getSudokuName) args
-       -- TODO: Call your solver.
-       printSudoku sud
+main = do
+    args <- getArgs
+    sud <- (readSudoku . getSudokuName) args
+    let solved = solveSudoku sud
+    if consistent solved
+        then printSudoku solved
+        else error "Invalid sudoku"
