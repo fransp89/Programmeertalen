@@ -13,7 +13,7 @@ tests_run() ->
     end).
 
 
-new_test_() -> 
+new_test_() ->
     [?_assert(grid:new(1, 1) =:= {1, 1, []}),
      ?_assert(grid:new(1, 2) =:= {1, 2, []}),
      ?_assert(grid:new(12, 10) =:= {12, 10, []}),
@@ -21,7 +21,7 @@ new_test_() ->
     ].
 
 
-get_wall_test_() -> 
+get_wall_test_() ->
     [?_assert(grid:get_wall(1, 3, north) =:= {{1,2},{1,3}}),
      ?_assert(grid:get_wall(4, 3, east) =:= {{4,3},{5,3}}),
      ?_assert(grid:get_wall(0, 0, north) =:= {{0,-1},{0,0}}),
@@ -38,13 +38,13 @@ has_wall_test_() ->
 add_wall_test_() ->
     [?_assert(grid:add_wall({{1,2},{1,3}}, {6, 6, []}) =:= {6, 6, [{{1,2},{1,3}}]}),
      ?_assert(grid:add_wall({{1,2},{1,3}}, {12, 12, []}) =:= {12, 12, [{{1,2},{1,3}}]}),
-     ?_assert(grid:add_wall({{1,2},{1,3}}, 
+     ?_assert(grid:add_wall({{1,2},{1,3}},
                             {12, 12, [{{1,2},{1,3}}]}) =:= {12, 12, [{{1,2},{1,3}}]})
     ].
 
 
 integration_test_() ->
-    [?_assert(grid:has_wall(grid:get_wall(2, 3, east), 
+    [?_assert(grid:has_wall(grid:get_wall(2, 3, east),
                             grid:add_wall(grid:get_wall(2, 3, east), grid:new(6, 6))))
     ].
 

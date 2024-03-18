@@ -18,10 +18,12 @@ init(Board) -> {ok, Board}.
 
 %%% TODO: implement these functions.
 restart() ->
-    ok.
+    gen_server:terminate(),
+    start_link().
 
 restart(Board) ->
-    ok.
+    gen_server:terminate(),
+    start_link(Board).
 
 move(X,Y) ->
     ok.

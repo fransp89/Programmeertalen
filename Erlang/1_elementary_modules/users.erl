@@ -13,15 +13,17 @@ get_users() ->
 % note you need to define several "get_females()" functions for different
 % list configurations
 
-get_females(Users) -> [].
-
-
+get_females(Users) ->
+  [X || X <- get_users(), {_, _, _, female, _}].
 
 % create functions which split the users in 2 groups: those
 % younger than 18 and older dan 18
-split_by_age(Users) -> [].
+split_by_age(Users) ->
+  [{User, ID, Name, Gender, Age} || {User, ID, Name, Gender, Age} <-
+    get_users(), Age < 18],
+  [{User, ID, Name, Gender, Age} || {User, ID, Name, Gender, Age} <-
+    get_users(), Age >= 18].
 
 %create functions to return the id and names as tuple of the users list above.
-
-
-get_id_name(Users) -> [].
+get_id_name(Users) ->
+  [{ID, Name} || {_, ID, Name, _, _} <- get_users()].

@@ -12,7 +12,7 @@ tests_run() ->
         _ -> 1
     end).
 
-get_cell_walls_test_() -> 
+get_cell_walls_test_() ->
     Walls = lists:sort(grid:get_cell_walls(1, 1)),
     WallsUnev = lists:sort(grid:get_cell_walls(2, 3)),
     [?_assertEqual([{{0,1},{1,1}},{{1,0},{1,1}},{{1,1},{1,2}},{{1,1},{2,1}}], Walls),
@@ -55,7 +55,7 @@ get_open_spots_test_() ->
         ],
     [H|T] = Walls,
 
-    [?_assert(lists:sort(grid:get_all_walls(1, 1)) 
+    [?_assert(lists:sort(grid:get_all_walls(1, 1))
               =:= lists:sort(grid:get_open_spots({1, 1, []}))),
      ?_assertEqual([], grid:get_open_spots({2, 1, Walls})),
      ?_assertEqual([H], grid:get_open_spots({2, 1, T}))

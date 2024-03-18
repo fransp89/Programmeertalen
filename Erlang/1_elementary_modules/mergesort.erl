@@ -4,19 +4,19 @@
 sort([]) -> [] ;
 sort([X]) -> [X] ;
 sort(Xs) -> todo.
-%%%%%%%%%%%%%%%
-%% YOUR CODE HERE
-%%%%%%%%%%%%%%%
+
+
+split() ->
+
+
+
 
 %you might need more than one merge function....
 
 %merge(......) ->
 %      ;
-%merge(......) -> 
+%merge(......) ->
 %    ;
 %merge(......) ->
-    %%%%%%%%%%%%%%%
-    %% YOUR CODE HERE
-    %%%%%%%%%%%%%%%
+
 % .
-    

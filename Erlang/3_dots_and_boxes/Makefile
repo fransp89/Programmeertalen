@@ -1,4 +1,4 @@
-TEST_SETUP=erl -noinput -s $@ tests_run 
+TEST_SETUP=erl -noinput -s $@ tests_run
 TESTS=tests_1a tests_1b tests_2a tests_2b tests_3 tests_4 tests_5
 
 .PHONY: clean tests ${TESTS}

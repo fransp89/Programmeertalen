@@ -30,11 +30,11 @@ test_spawn({_, Client}) ->
 
 wait_for_move(Server, Last) ->
     {ok, Wall} = gen_server:call(Server, last_wall),
-    if 
+    if
         Wall == Last -> wait_for_move(Server, Last);
         true -> Wall
     end.
-   
+
 % Tests if you respond well to a move request.
 test_move({Server, Client}) ->
     % Grid of 1 Cell.
@@ -52,7 +52,7 @@ instantiator(Fixture) ->
     % You have ten seconds(more than enough).
     % If you get a timeout, your client is not
     % making moves.
-    {timeout, 10, {inorder, 
+    {timeout, 10, {inorder,
         [?_test(test_spawn(Fixture)),
          ?_test(test_move(Fixture))
         ]
@@ -60,8 +60,8 @@ instantiator(Fixture) ->
 
 
 move_test_() ->
-    {setup, 
-        fun setup/0,  
+    {setup,
+        fun setup/0,
         fun shutdown/1,
         fun instantiator/1
     }.
