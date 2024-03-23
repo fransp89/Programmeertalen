@@ -1,3 +1,7 @@
+% Name: Francesco Pavlovic
+% UvAnetID: 13782118
+% Study: B.S.c Informatica
+
 -module(lobby_server).
 
 -behaviour(gen_server).
@@ -10,6 +14,7 @@
 new_game(W, H, Players) ->
     gen_server:call(lobby_server, {new_game, W, H, Players}).
 
+% Gives the list of running games back.
 games() ->
     gen_server:call(lobby_server, games).
 
@@ -17,15 +22,18 @@ games() ->
 start() ->
     gen_server:start({local, lobby_server}, lobby_server, [], []).
 
+% Creates the list that contain running games, and allows timeouts to send an
+% 'EXIT' message.
 init([]) ->
     process_flag(trap_exit, true),
     {ok, []}.
 
-% TODO: add handle_call to make new_game/3 work.
+% Helper function for new_game().
 handle_call({new_game, W, H, Players}, _From, Games) ->
     {ok, GamePid} = game_server:start_link({W, H, Players}),
     {reply, {ok, GamePid}, [GamePid | Games]};
 
+% Helper function for games().
 handle_call(games, _From, Games) ->
     {reply, Games, Games}.
 
@@ -35,6 +43,7 @@ handle_call(games, _From, Games) ->
 handle_cast(_, State) ->
     {reply, not_implemented, State}.
 
+% Handles a game stopping.
 handle_info({'EXIT', From, normal}, State) ->
     {noreply, lists:delete(From, State)};
 
