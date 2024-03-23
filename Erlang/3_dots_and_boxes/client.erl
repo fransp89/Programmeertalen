@@ -1,5 +1,5 @@
 -module(client).
--import(grid, [choose_random_wall/1]).
+-import(grid, [choose_completable_wall/1]).
 -export([move/0, new/0]).
 
 
@@ -10,7 +10,8 @@ move() ->
         finished ->
             io:format("~p: I am done~n", [self()]);
         {move, ServerPid, Grid} ->
-            ServerPid ! {move, choose_random_wall(Grid)}
+            gen_server:call(ServerPid, {move, choose_completable_wall(Grid)}),
+            move()
     end.
 
 
